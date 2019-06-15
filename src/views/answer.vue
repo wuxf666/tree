@@ -50,9 +50,8 @@ import {Toast} from 'mint-ui'
                 return this.content.length
             },
             totalScores() {
-                return this.scores.reduce(function (prev, next) {
-                    return Number(prev) + Number(next)
-                })
+                let len = this.scores.length;
+                return 100/this.content.length * len;
             }
         },
         mounted() {
@@ -80,14 +79,12 @@ import {Toast} from 'mint-ui'
                 this.scores.pop();
             },
             cmtFun() {
-                let len = this.scores.length;
-                let scores = 100/this.content.length * len;
-                
+             
                 getpoint({
                     userId: storage.get("uid"),
                     level: this.level,
                     nodeId:this.nodeId,
-                    score: scores
+                    score: this.totalScores
                 }).then(({status, data: d}) => {
                     if (status == '200') {
                         this.$router.push({
@@ -110,7 +107,7 @@ import {Toast} from 'mint-ui'
                  if (index === this.total - 1) {
                       MessageBox({
                         title: '提示',
-                        errorTip:`是否确认提交？`,
+                        errorTip:`当前得分：`+this.totalScores+`，是否确认提交？`,
                         btnTxt:'确认提交'
                     }).then(res => {
                         if(res==0){

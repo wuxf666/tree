@@ -8,6 +8,7 @@
       <li @click="goAnswer" :class="currentLevel=='2'?'active':'' ">levelB-----</li>
       <li @click="goAnswer" :class="currentLevel=='1'?'active':'' ">levelA-----</li>
     </ul>
+    <i class="jinbi" @click="goOut"></i>
     <i class="edit" @click="goQusetion" ></i>
   </div>
 </template>
@@ -21,7 +22,8 @@ export default {
     return {
       lid: this.$route.query.lid || "",
       currentLevel: "",
-      levels: []
+      levels: [],
+      pointsUrl:""
     };
   },
   mounted() {
@@ -36,7 +38,7 @@ export default {
         if (status == "200") {
           this.currentLevel = data.currentLevel;
           console.log( this.currentLevel);
-          
+          this.pointsUrl = data.pointsUrl;
           storage.set('currentLevel',this.currentLevel);
           let oldLevel = storage.get('oldLevel')||'';
           if(oldLevel !=""){
@@ -70,6 +72,14 @@ export default {
               lid: this.lid
             } });
     
+    },
+    goOut(){
+      if(this.pointsUrl !=''){
+        location.href=this.pointsUrl
+      }else{
+        location.href="https://rinkeby.etherscan.io/tx/0x5f938a2fe53cbe7fd1124d3660d97c1f1675750f1ffb623942a210e0537cf5fb"
+      }
+     
     }
   }
 };
@@ -89,6 +99,16 @@ export default {
    position: absolute;
   bottom: 2rem;
   right: 1rem;
+}
+.jinbi{
+   width: 2rem;height: 2rem;
+  display: block;
+  background: url("../assets/img/jinbi.png");
+   background-repeat: no-repeat;
+  background-size: 100% 100%;
+   position: absolute;
+  bottom: 5rem;
+  right: 1.1rem;
 }
 .tree {
   width: 10rem;
@@ -113,6 +133,7 @@ export default {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+
 ul {
   width: 6rem;
   height: 90%;
