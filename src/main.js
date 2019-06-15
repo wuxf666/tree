@@ -2,8 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import {Button,Toast,Search,Radio,Field} from 'mint-ui'
+import {Button,Toast,Search,Radio,Field,Cell} from 'mint-ui'
 
+Vue.component(Cell.name, Cell);
 Vue.component(Field.name, Field);
 Vue.component(Radio.name, Radio);
 import VueScroller from "./components/VueScroller"

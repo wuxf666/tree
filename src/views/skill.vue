@@ -8,6 +8,7 @@
             <div  class="touch"  @click="getLevl(skill.id)" v-for="(skill,index ) in course" :key="skill.id" :class="index>0?'touch'+index:''">
                 {{skill.name}}
             </div>
+            <p class="desc">技能行业介绍：技能归属领域，技能工作价值，学习成本，方法，市场需求量，行业前景，薪酬范围，学校推荐等</p>
         </div>
 
     </div>
@@ -43,15 +44,6 @@ import {storage} from '../assets/js/tool'
         methods: {
             getLevl(id) { 
                  this.$router.push({path: '/skilldetail', query:{lid: id}});
-                // getLevel().then(({data, status}) => {
-                //     if (status == '200') {
-                       
-                //         this.option.series=data
-                //         storage.set('tree',JSON.stringify(data))
-                //             // this.$router.push({path: '/course'});
-                //     }else{
-                //     }
-                // })
                 
             }
         },
@@ -72,7 +64,14 @@ body{
     margin: auto ;
     // border:1px solid red;
     position: relative;
-   
+   .desc{
+          line-height: 1rem;
+    margin-bottom: -3.8rem;
+    position: absolute;
+    bottom: 0;
+    padding: .6rem;
+    font-size: .8rem;
+   }
     .tree-green{
         width: 100%;
         height: 2rem;

@@ -5,7 +5,7 @@ import Course from './views/course.vue'
 import Skill from './views/skill.vue'
 import SkillDetail from './views/skilldetail.vue'
 import Answer from './views/answer.vue'
-import Result from './views/result.vue'
+import Question from './views/question.vue'
 Vue.use(Router)
 
 const router =  new Router({
@@ -51,11 +51,11 @@ const router =  new Router({
       }
     },
     {
-      path: '/result',
-      name: 'result',
-      component:Result,
+      path: '/question',
+      name: 'question',
+      component:Question,
       meta: {
-        title: "结果"
+        title: "问题列表"
       }
     }
   ]

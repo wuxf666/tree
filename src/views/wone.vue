@@ -1,6 +1,6 @@
 <template>
     <div class="con">
-        <h4>Welcome</h4>
+        <h4>欢迎~</h4>
         <mt-field label="昵称：" placeholder="请输入昵称" v-model="uname"></mt-field>
        <i class="icons"></i>
         <div class="links">
@@ -56,6 +56,15 @@ h4{
     padding: .8rem 5%;
 }
 .icons{
-    width:1rem;
+    width:7rem;
+    height:7rem;
+    display: block;
+    position: absolute;
+    left:50%;
+    margin-left:-3.5rem;
+    top:40%;
+    background: url("../assets/img/ani1.png");
+   background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 </style>

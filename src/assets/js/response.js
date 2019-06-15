@@ -26,5 +26,15 @@ export function getpoint(params = {}) {
     const url = domainName + "/question/answer";
     return getData(url, params);
 }
+//问题列表
+export function getAsksList(params = {}) {
+    const url = domainName + "/users/asks";
+    return getData(url, params);
+}
+//问题列表
+export function setAsk(params = {}) {
+    const url = domainName + "/users/ask";
+    return getData(url, params);
+}
 
 

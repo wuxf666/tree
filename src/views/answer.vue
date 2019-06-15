@@ -93,7 +93,7 @@ import {Toast} from 'mint-ui'
                         this.$router.push({
                             path: "/skilldetail",
                             query: {
-                                lid:this.level,
+                                lid:this.nodeId,
                             }
                         });
                     }

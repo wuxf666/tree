@@ -22,10 +22,10 @@
 <script>
 import Highcharts from "highcharts/highcharts";
 import HighchartsMore from "highcharts/highcharts-more";
-import HighchartsExporting from "highcharts/modules/exporting";
+// import HighchartsExporting from "highcharts/modules/exporting";
 import HighchartsOldie from "highcharts/modules/oldie";
 HighchartsMore(Highcharts)
-HighchartsExporting(Highcharts);
+// HighchartsExporting(Highcharts);
 HighchartsOldie(Highcharts);
 import {getTree} from '../assets/js/response'
 import {storage} from '../assets/js/tool'
@@ -121,6 +121,7 @@ export default {
 .content {
   padding: 2rem 0;
 }
+.highcharts-exporting-group{display: none;}
 label {
   width: 2.5rem;
   height: 2rem;
