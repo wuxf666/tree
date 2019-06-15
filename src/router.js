@@ -15,7 +15,7 @@ const router =  new Router({
       name: 'index',
       component:StepOne,
       meta: {
-        title: "welcome"
+        title: "织金树"
       }
     },
     {

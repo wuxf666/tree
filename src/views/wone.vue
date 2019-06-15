@@ -1,6 +1,6 @@
 <template>
     <div class="con">
-        <h4>欢迎~</h4>
+        <h4>织金树</h4>
         <mt-field label="昵称：" placeholder="请输入昵称" v-model="uname"></mt-field>
        <i class="icons"></i>
         <div class="links">
@@ -53,7 +53,7 @@ h4{
     width: 90%;
     position: absolute;
     bottom:0;
-    padding: .8rem 5%;
+    padding: 1rem 5%;
 }
 .icons{
     width:7rem;
