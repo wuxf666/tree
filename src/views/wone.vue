@@ -3,25 +3,10 @@
         <h4>Welcome</h4>
         <mt-field label="昵称：" placeholder="请输入昵称" v-model="uname"></mt-field>
        <i class="icons"></i>
-        <!-- <mt-radio
-            title="radio list"
-            v-model="value"
-            :options="['金蝉', '小蜜蜂', 'optionC']">
-        </mt-radio> -->
         <div class="links">
             <!-- <p>系统会暂时默认一个金蝉的小动物呦</p> -->
-             <!-- <router-link :to="{ name: 'course', query: { plan: 'private' }}"> -->
             <mt-button type="primary"  size="large" @click="goLogin">下一步</mt-button>
-            <!-- </router-link> -->
         </div>
-        <!-- <div  class="links" >
-             <router-link :to="{ name: 'course', query: { plan: 'private' }}">
-              <mt-button type="primary">小金蟾</mt-button>
-            </router-link>
-        </div> -->
-       
-        
-      
     </div>
 </template>
 
