@@ -1,6 +1,6 @@
 <template>
     <div id="js_appr">
-        <!-- <scroller> -->
+        <scroller>
             <div style="height: 2.15rem"></div>
             <div class="layout" v-if="currIndex == index" v-for="(i,index) in content" :key="index">
                 <div class="tit-list">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-        <!-- </scroller> -->
+        </scroller>
     </div>
 </template>
 
@@ -28,9 +28,10 @@
 
 import {storage} from '../assets/js/tool'
 import {getQues,getpoint} from '../assets/js/response'
+ import MessageBox from '../components/MessageBox'; //通用的弹框
 import {Toast} from 'mint-ui'
     export default {
-        name: "riskIssue",
+        name: "answer",
         data() {
             return {
                 level:this.$route.query.lid || "",
@@ -57,10 +58,6 @@ import {Toast} from 'mint-ui'
         mounted() {
             this.$nextTick(()=>{
                 this.getQuestion();
-                setTimeout(() => {
-                    this.cmtFun()
-                }, 5000);
-                
                 // document.body.addEventListener("touchstart", function () {});
             });
         },
@@ -83,31 +80,52 @@ import {Toast} from 'mint-ui'
                 this.scores.pop();
             },
             cmtFun() {
+                let len = this.scores.length;
+                let scores = 100/this.content.length * len;
+                
                 getpoint({
                     userId: storage.get("uid"),
                     level: this.level,
                     nodeId:this.nodeId,
-                    score: 90
+                    score: scores
                 }).then(({status, data: d}) => {
                     if (status == '200') {
                         this.$router.push({
-                            path: "/result",
+                            path: "/skilldetail",
                             query: {
-                                point:90
+                                lid:this.level,
                             }
                         });
                     }
                 });
             },
             answerFun(index, option,answer) {
-                
                 if (this.scores.length !== this.total) {
                     this.answer.push(option);
                     if((option+1) == parseInt(answer)){
                         this.scores.push(option);
                     }
+                   
                 }
-               
+                 if (index === this.total - 1) {
+                      MessageBox({
+                        title: '提示',
+                        errorTip:`是否确认提交？`,
+                        btnTxt:'确认提交'
+                    }).then(res => {
+                        if(res==0){
+                            this.escFun();
+                        }else{
+                            this.cmtFun();
+                        }
+                    });
+
+                 }else{
+                    setTimeout(() => {
+                        this.currIndex = index + 1;
+                    },200);
+
+                 }
             },
             issueUpFun(index) {
                 this.escFun();

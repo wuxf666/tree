@@ -6,9 +6,10 @@ import {Button,Toast,Search,Radio,Field} from 'mint-ui'
 
 Vue.component(Field.name, Field);
 Vue.component(Radio.name, Radio);
-// import VueScroller from "./components/VueScroller"
+import VueScroller from "./components/VueScroller"
+require("es6-promise").polyfill();
 //require('./assets/js/vconsole');
-// Vue.use(VueScroller);
+Vue.use(VueScroller);
 Vue.component(Button.name,Button);
 Vue.component(Search.name, Search);
 Vue.config.productionTip = false

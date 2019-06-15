@@ -31,9 +31,19 @@ export default {
       }).then(({ data, status }) => {
         if (status == "200") {
           this.currentId = data.currentLevel;
+          storage.set('currentLevel',this.currentId);
+          let oldLevel = storage.get('oldLevel')||'';
+          if(oldLevel !=""){
+            if(this.currentId > oldLevel){
+              Toast("晋级了呢！加油！")
+               storage.set('oldLevel',this.currentId);
+            }else{
+              Toast("继续努力呦~")
+            }
+          }
           this.levels = data.questionLevel;
         } else {
-          Toast("fds");
+           storage.set('oldLevel',this.currentId);
         }
       });
     },
@@ -42,9 +52,9 @@ export default {
           {
             path: "/answer",
             query: {
-                 lid: this.currentId,
-                 nid:this.lid
-                  } });
+              lid: this.currentId,
+              nid:this.lid
+            } });
     }
   }
 };

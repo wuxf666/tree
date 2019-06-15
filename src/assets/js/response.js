@@ -1,6 +1,6 @@
 import { getData } from "../encrypt/api";
-const domainName = 'http://backend.tree.com/rest'
-// const domainName = 'http://backend.360tryst.com/rest'
+// const domainName = 'http://backend.tree.com/rest'
+const domainName = 'http://backend.360tryst.com/rest'
 //用户登录
 export function login(params = {}) {
     const url = domainName + "/users/login";

@@ -8,45 +8,63 @@ import Answer from './views/answer.vue'
 import Result from './views/result.vue'
 Vue.use(Router)
 
-export default new Router({
+const router =  new Router({
   routes: [
     {
       path: '/',
       name: 'index',
-      component:StepOne
+      component:StepOne,
+      meta: {
+        title: "welcome"
+      }
     },
     {
       path: '/course',
       name: 'course',
-      component:Course
+      component:Course,
+      meta: {
+        title: "职业技能"
+      }
     },
     {
       path: '/skill',
       name: 'skill',
-      component:Skill
+      component:Skill,
+      meta: {
+        title: "织金树"
+      }
     },
     {
       path: '/skilldetail',
       name: 'skilldetail',
-      component:SkillDetail
+      component:SkillDetail,
+      meta: {
+        title: "技能等级"
+      }
     },
     {
       path: '/answer',
       name: 'answer',
-      component:Answer
+      component:Answer,
+      meta: {
+        title: "技能问答"
+      }
     },
     {
       path: '/result',
       name: 'result',
-      component:Result
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component:Result,
+      meta: {
+        title: "结果"
+      }
     }
   ]
-})
+});
+router.beforeEach((to, from, next) => {
+  window.scrollTo(0, 0);
+  if (to.meta.title) {
+      document.title = to.meta.title;
+  }
+  next();
+});
+export default router;
